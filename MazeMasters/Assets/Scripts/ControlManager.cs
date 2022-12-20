@@ -8,11 +8,13 @@ public class ControlManager : MonoBehaviour
 
     [HideInInspector]
     public InGameUI inGameUIControls;
+    public PlayerControls playerControls;
 
     private void Awake()
     {
 
         inGameUIControls = new InGameUI();
+        playerControls = new PlayerControls();
         if (instance != null)
         {
             GameObject.Destroy(this);
@@ -26,6 +28,16 @@ public class ControlManager : MonoBehaviour
         inGameUIControls.General.Enable();
         inGameUIControls.Menu.Disable();
         inGameUIControls.Settings.Disable();
+        playerControls.GeneralMovement.Enable();
+    }
+
+    public void EnableMovementControls()
+    {
+        playerControls.GeneralMovement.Enable();
+    }
+    public void DisableMovementControls()
+    {
+        playerControls.GeneralMovement.Disable();
     }
 
     public void EnableMenuControls()
@@ -33,7 +45,6 @@ public class ControlManager : MonoBehaviour
         ControlManager.instance.inGameUIControls.General.Disable();
         ControlManager.instance.inGameUIControls.Menu.Enable();
     }
-
     public void DisableMenuControls()
     {
         ControlManager.instance.inGameUIControls.General.Enable();
@@ -45,7 +56,6 @@ public class ControlManager : MonoBehaviour
         inGameUIControls.Console.Enable();
         inGameUIControls.General.Disable();
     }
-
     public void DisableConsoleControls()
     {
         inGameUIControls.Console.Disable();
@@ -57,12 +67,9 @@ public class ControlManager : MonoBehaviour
         inGameUIControls.Menu.Disable();
         inGameUIControls.Settings.Enable();
     }
-
     public void DisableSettingsControls()
     {
         inGameUIControls.Menu.Enable();
         inGameUIControls.Settings.Disable();
     }
-
-
 }
