@@ -1,1 +1,1 @@
-# Maze-Game
+# Maze-Masters
