@@ -35,6 +35,51 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeLookDirection"",
+                    ""type"": ""Value"",
+                    ""id"": ""abd2ff57-e95b-4cc7-81c3-6c8016e90685"",
+                    ""expectedControlType"": ""Delta"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""6ca39077-491d-47bd-bac6-c82c683e7a68"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""8b0210d7-6eb3-4b29-80de-f6210acb2d76"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""a51bb0d8-9450-4071-802c-f21b62e26c5e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Roll"",
+                    ""type"": ""Button"",
+                    ""id"": ""7008e41b-95f6-4fe5-afa2-46d7d2915f49"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -92,6 +137,61 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""MovementDirection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc0be3ea-96ec-4524-8c00-992a2ec2c156"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeLookDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a3ec6bc-f2a4-405c-8fd1-2a13a02532f2"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c540cd91-55cc-4c8a-be3f-55e4f84c69cd"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70cb9d86-2112-4163-8a4f-165cadb4d878"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95b8ca2e-e636-4466-bedb-0aba9773f54a"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -101,6 +201,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // GeneralMovement
         m_GeneralMovement = asset.FindActionMap("GeneralMovement", throwIfNotFound: true);
         m_GeneralMovement_MovementDirection = m_GeneralMovement.FindAction("MovementDirection", throwIfNotFound: true);
+        m_GeneralMovement_ChangeLookDirection = m_GeneralMovement.FindAction("ChangeLookDirection", throwIfNotFound: true);
+        m_GeneralMovement_Jump = m_GeneralMovement.FindAction("Jump", throwIfNotFound: true);
+        m_GeneralMovement_Crouch = m_GeneralMovement.FindAction("Crouch", throwIfNotFound: true);
+        m_GeneralMovement_Sprint = m_GeneralMovement.FindAction("Sprint", throwIfNotFound: true);
+        m_GeneralMovement_Roll = m_GeneralMovement.FindAction("Roll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -161,11 +266,21 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_GeneralMovement;
     private IGeneralMovementActions m_GeneralMovementActionsCallbackInterface;
     private readonly InputAction m_GeneralMovement_MovementDirection;
+    private readonly InputAction m_GeneralMovement_ChangeLookDirection;
+    private readonly InputAction m_GeneralMovement_Jump;
+    private readonly InputAction m_GeneralMovement_Crouch;
+    private readonly InputAction m_GeneralMovement_Sprint;
+    private readonly InputAction m_GeneralMovement_Roll;
     public struct GeneralMovementActions
     {
         private @PlayerControls m_Wrapper;
         public GeneralMovementActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @MovementDirection => m_Wrapper.m_GeneralMovement_MovementDirection;
+        public InputAction @ChangeLookDirection => m_Wrapper.m_GeneralMovement_ChangeLookDirection;
+        public InputAction @Jump => m_Wrapper.m_GeneralMovement_Jump;
+        public InputAction @Crouch => m_Wrapper.m_GeneralMovement_Crouch;
+        public InputAction @Sprint => m_Wrapper.m_GeneralMovement_Sprint;
+        public InputAction @Roll => m_Wrapper.m_GeneralMovement_Roll;
         public InputActionMap Get() { return m_Wrapper.m_GeneralMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -178,6 +293,21 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @MovementDirection.started -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnMovementDirection;
                 @MovementDirection.performed -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnMovementDirection;
                 @MovementDirection.canceled -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnMovementDirection;
+                @ChangeLookDirection.started -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnChangeLookDirection;
+                @ChangeLookDirection.performed -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnChangeLookDirection;
+                @ChangeLookDirection.canceled -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnChangeLookDirection;
+                @Jump.started -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnJump;
+                @Crouch.started -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnCrouch;
+                @Crouch.performed -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnCrouch;
+                @Crouch.canceled -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnCrouch;
+                @Sprint.started -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnSprint;
+                @Roll.started -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnRoll;
+                @Roll.performed -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnRoll;
+                @Roll.canceled -= m_Wrapper.m_GeneralMovementActionsCallbackInterface.OnRoll;
             }
             m_Wrapper.m_GeneralMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -185,6 +315,21 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @MovementDirection.started += instance.OnMovementDirection;
                 @MovementDirection.performed += instance.OnMovementDirection;
                 @MovementDirection.canceled += instance.OnMovementDirection;
+                @ChangeLookDirection.started += instance.OnChangeLookDirection;
+                @ChangeLookDirection.performed += instance.OnChangeLookDirection;
+                @ChangeLookDirection.canceled += instance.OnChangeLookDirection;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+                @Crouch.started += instance.OnCrouch;
+                @Crouch.performed += instance.OnCrouch;
+                @Crouch.canceled += instance.OnCrouch;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
+                @Roll.started += instance.OnRoll;
+                @Roll.performed += instance.OnRoll;
+                @Roll.canceled += instance.OnRoll;
             }
         }
     }
@@ -192,5 +337,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IGeneralMovementActions
     {
         void OnMovementDirection(InputAction.CallbackContext context);
+        void OnChangeLookDirection(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
+        void OnRoll(InputAction.CallbackContext context);
     }
 }
