@@ -15,7 +15,7 @@ public class SettingsMenu : MonoBehaviour
     public void Start()
     {
         ControlManager.instance.inGameUIControls.Settings.CloseSettings.performed += ctx => CloseSettings();
-        ControlManager.instance.inGameUIControls.Settings.croll.performed += ctx => Scroll(ctx);
+        ControlManager.instance.inGameUIControls.Settings.Scroll.performed += ctx => Scroll(ctx);
         scrollbar.size = viewPort.sizeDelta.y / contentTransform.sizeDelta.y;
         scrollbar.value = 0;
         ScrollContent();
