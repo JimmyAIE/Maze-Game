@@ -223,7 +223,7 @@ public partial class @InGameUI : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""croll"",
+                    ""name"": ""Scroll"",
                     ""type"": ""Button"",
                     ""id"": ""ca540348-1038-4bf9-9b34-0806561eee71"",
                     ""expectedControlType"": ""Button"",
@@ -251,7 +251,7 @@ public partial class @InGameUI : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""croll"",
+                    ""action"": ""Scroll"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -262,7 +262,7 @@ public partial class @InGameUI : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""croll"",
+                    ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -273,7 +273,7 @@ public partial class @InGameUI : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""croll"",
+                    ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -298,7 +298,7 @@ public partial class @InGameUI : IInputActionCollection2, IDisposable
         // Settings
         m_Settings = asset.FindActionMap("Settings", throwIfNotFound: true);
         m_Settings_CloseSettings = m_Settings.FindAction("CloseSettings", throwIfNotFound: true);
-        m_Settings_croll = m_Settings.FindAction("croll", throwIfNotFound: true);
+        m_Settings_Scroll = m_Settings.FindAction("Scroll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -490,13 +490,13 @@ public partial class @InGameUI : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Settings;
     private ISettingsActions m_SettingsActionsCallbackInterface;
     private readonly InputAction m_Settings_CloseSettings;
-    private readonly InputAction m_Settings_croll;
+    private readonly InputAction m_Settings_Scroll;
     public struct SettingsActions
     {
         private @InGameUI m_Wrapper;
         public SettingsActions(@InGameUI wrapper) { m_Wrapper = wrapper; }
         public InputAction @CloseSettings => m_Wrapper.m_Settings_CloseSettings;
-        public InputAction @croll => m_Wrapper.m_Settings_croll;
+        public InputAction @Scroll => m_Wrapper.m_Settings_Scroll;
         public InputActionMap Get() { return m_Wrapper.m_Settings; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -509,9 +509,9 @@ public partial class @InGameUI : IInputActionCollection2, IDisposable
                 @CloseSettings.started -= m_Wrapper.m_SettingsActionsCallbackInterface.OnCloseSettings;
                 @CloseSettings.performed -= m_Wrapper.m_SettingsActionsCallbackInterface.OnCloseSettings;
                 @CloseSettings.canceled -= m_Wrapper.m_SettingsActionsCallbackInterface.OnCloseSettings;
-                @croll.started -= m_Wrapper.m_SettingsActionsCallbackInterface.OnCroll;
-                @croll.performed -= m_Wrapper.m_SettingsActionsCallbackInterface.OnCroll;
-                @croll.canceled -= m_Wrapper.m_SettingsActionsCallbackInterface.OnCroll;
+                @Scroll.started -= m_Wrapper.m_SettingsActionsCallbackInterface.OnScroll;
+                @Scroll.performed -= m_Wrapper.m_SettingsActionsCallbackInterface.OnScroll;
+                @Scroll.canceled -= m_Wrapper.m_SettingsActionsCallbackInterface.OnScroll;
             }
             m_Wrapper.m_SettingsActionsCallbackInterface = instance;
             if (instance != null)
@@ -519,9 +519,9 @@ public partial class @InGameUI : IInputActionCollection2, IDisposable
                 @CloseSettings.started += instance.OnCloseSettings;
                 @CloseSettings.performed += instance.OnCloseSettings;
                 @CloseSettings.canceled += instance.OnCloseSettings;
-                @croll.started += instance.OnCroll;
-                @croll.performed += instance.OnCroll;
-                @croll.canceled += instance.OnCroll;
+                @Scroll.started += instance.OnScroll;
+                @Scroll.performed += instance.OnScroll;
+                @Scroll.canceled += instance.OnScroll;
             }
         }
     }
@@ -545,6 +545,6 @@ public partial class @InGameUI : IInputActionCollection2, IDisposable
     public interface ISettingsActions
     {
         void OnCloseSettings(InputAction.CallbackContext context);
-        void OnCroll(InputAction.CallbackContext context);
+        void OnScroll(InputAction.CallbackContext context);
     }
 }
